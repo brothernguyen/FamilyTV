@@ -12,10 +12,21 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let categories = ["Business", "Culture", "Sport", "Techmology", "Travel"]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Typecast root view controller to be a tab bar controller
+        if let tabBarController = window?.rootViewController as? UITabBarController {
+            var viewControllers = [ViewController]()
+            
+            for cat in categories {
+                if let newController = tabBarController.storyboard?.instantiateViewController(withIdentifier: "Movies") as? ViewController {
+                    newController.title = cat
+                    viewControllers.append(newController)
+                }
+            }
+            tabBarController.viewControllers = viewControllers
+        }
         return true
     }
 
