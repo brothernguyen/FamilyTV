@@ -10,7 +10,7 @@ import UIKit
 
 class MovieCell: UICollectionViewCell {
     
-    @IBOutlet weak var movieImageView: UIImageView!
+    @IBOutlet weak var movieImageView: RemoteImageView!
     @IBOutlet weak var movieTextLabel: UILabel!
     
     @IBOutlet var unfocusedConstraint: NSLayoutConstraint!
