@@ -17,8 +17,7 @@ class RemoteImageView: UIImageView {
         return paths[0]
     }
     
-    func load(_ imgURL: URL) {
-        debugPrint("===url===:", imgURL)
+    func load(_ imgURL: URL) {        
         
         self.url = imgURL
         guard let savedFilename = imgURL.absoluteString.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics) else { return }

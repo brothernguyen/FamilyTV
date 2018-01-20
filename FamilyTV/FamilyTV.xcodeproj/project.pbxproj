@@ -13,6 +13,7 @@
 		CC5E9E8A2004F15900209569 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC5E9E892004F15900209569 /* Assets.xcassets */; };
 		CC5E9E922004F2EB00209569 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5E9E912004F2EB00209569 /* SwiftyJSON.swift */; };
 		CC7519F8200643B2002BCEE2 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7519F7200643B2002BCEE2 /* MovieCell.swift */; };
+		CCCADA282013310E00341717 /* ReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCADA272013310E00341717 /* ReaderViewController.swift */; };
 		CCD231AA201227C10019D2BA /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD231A9201227C10019D2BA /* RemoteImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,8 @@
 		CC5E9E8B2004F15900209569 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC5E9E912004F2EB00209569 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		CC7519F7200643B2002BCEE2 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		CCCADA272013310E00341717 /* ReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderViewController.swift; sourceTree = "<group>"; };
+		CCCADA292013336700341717 /* wrapper.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = wrapper.html; sourceTree = "<group>"; };
 		CCD231A9201227C10019D2BA /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,9 +63,11 @@
 			children = (
 				CC5E9E822004F15900209569 /* AppDelegate.swift */,
 				CC5E9E842004F15900209569 /* ViewController.swift */,
+				CCCADA272013310E00341717 /* ReaderViewController.swift */,
 				CC5E9E862004F15900209569 /* Main.storyboard */,
 				CC7519F7200643B2002BCEE2 /* MovieCell.swift */,
 				CCD231A9201227C10019D2BA /* RemoteImageView.swift */,
+				CCCADA292013336700341717 /* wrapper.html */,
 				CC5E9E892004F15900209569 /* Assets.xcassets */,
 				CC5E9E8B2004F15900209569 /* Info.plist */,
 				CC5E9E912004F2EB00209569 /* SwiftyJSON.swift */,
@@ -146,6 +151,7 @@
 				CC7519F8200643B2002BCEE2 /* MovieCell.swift in Sources */,
 				CCD231AA201227C10019D2BA /* RemoteImageView.swift in Sources */,
 				CC5E9E832004F15900209569 /* AppDelegate.swift in Sources */,
+				CCCADA282013310E00341717 /* ReaderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

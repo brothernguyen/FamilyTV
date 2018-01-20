@@ -18,7 +18,7 @@ class ViewController: UICollectionViewController {
         
         guard let title = title else { return }        
         guard let url = URL(string: "https://content.guardianapis.com/\(title.lowercased())?api-key=\(apiKey)&show-fields=thumbnail,headline,standfirst,body") else { return }
-        
+                
         DispatchQueue.global(qos: .userInteractive).async {
             
             self.fetch(url)
@@ -58,6 +58,13 @@ class ViewController: UICollectionViewController {
         }
         
         return newsCell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let reader = storyboard?.instantiateViewController(withIdentifier: "Reader") as? ReaderViewController else { return }
+        
+        reader.article = articles[indexPath.row]
+        present(reader, animated: true)
     }
     
 }
