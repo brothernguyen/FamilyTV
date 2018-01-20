@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UICollectionViewController {
+class ViewController: UICollectionViewController, UISearchResultsUpdating {
     
     var apiKey = "138738ef-2a6d-44ac-bc0a-1b28a40c17fb"
     var articles = [JSON]()
@@ -67,5 +67,21 @@ class ViewController: UICollectionViewController {
         present(reader, animated: true)
     }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        guard let text = searchController.searchBar.text else { return }
+        if text.isEmpty {
+            articles = [JSON]()
+            collectionView?.reloadData()            
+        } else {
+            
+            guard let url = URL(string: "https://content.guardianapis.com/search?api-key=\(apiKey)&q=\(text)&show-fields=thumbnail,headline,standfirst,body") else { return }
+            
+            DispatchQueue.global(qos: .userInteractive).async {
+                
+                self.fetch(url)
+            }
+        }
+    }
 }
 

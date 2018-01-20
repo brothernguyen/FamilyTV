@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Typecast root view controller to be a tab bar controller
         if let tabBarController = window?.rootViewController as? UITabBarController {
-            var viewControllers = [ViewController]()
+            var viewControllers = [UIViewController]()
             
             for cat in categories {
                 if let newController = tabBarController.storyboard?.instantiateViewController(withIdentifier: "Movies") as? ViewController {
@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     viewControllers.append(newController)
                 }
             }
+            
+            viewControllers.append(createSearch(storyboard: tabBarController.storyboard))
             tabBarController.viewControllers = viewControllers
         }
         return true
@@ -52,6 +54,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func createSearch(storyboard: UIStoryboard?) -> UIViewController {
+        
+        guard let newsController = storyboard?.instantiateViewController(withIdentifier: "Movies") as? ViewController else { fatalError("Unable to instantiate a NewsController.")
+        }
+        
+        let searchController = UISearchController(searchResultsController: newsController)
+        searchController.searchResultsUpdater = newsController
+        
+        let searchContainer = UISearchContainerViewController(searchController: searchController)
+        searchContainer.title = "Search"
+        
+        return searchContainer
+    }
 
 }
 
