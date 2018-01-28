@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let categories = ["Business", "Culture", "Sport", "Techmology", "Travel"]
+    let categories = ["Business", "Culture", "Sport", "Technology", "Travel"]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Typecast root view controller to be a tab bar controller

@@ -18,7 +18,7 @@ class ReaderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         guard let article = article else { return }
         
         body.panGestureRecognizer.allowedTouchTypes = [UITouchType.indirect.rawValue] as [NSNumber]
