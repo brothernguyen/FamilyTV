@@ -48,6 +48,7 @@ class ReaderViewController: UIViewController {
                 
             }
         }
+        body.font = UIFont.systemFont(ofSize: 40)
     }
     
     func formatHTML(_ html: String) -> String {        
