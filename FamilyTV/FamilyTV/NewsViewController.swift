@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UICollectionViewController, UISearchResultsUpdating {
+class NewsViewController: UICollectionViewController, UISearchResultsUpdating {
     
     var apiKey = "138738ef-2a6d-44ac-bc0a-1b28a40c17fb"
     var articles = [JSON]()
@@ -44,24 +44,24 @@ class ViewController: UICollectionViewController, UISearchResultsUpdating {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? MovieCell else { fatalError("Couldn't dequeue a cell") }
+        guard let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? NewsCell else { fatalError("Couldn't dequeue a cell") }
         
         let newsItem = articles[indexPath.row]
         let title = newsItem["fields"]["headline"].stringValue
         let thumbnail = newsItem["fields"]["thumbnail"].stringValue
         
-        newsCell.movieTextLabel.text = title
+        newsCell.newsTextLabel.text = title
         
         if let imageURL = URL(string: thumbnail) {
             
-            newsCell.movieImageView.load(imageURL)
+            newsCell.newsImageView.load(imageURL)
         }
         
         return newsCell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let reader = storyboard?.instantiateViewController(withIdentifier: "Reader") as? ReaderViewController else { return }
+        guard let reader = storyboard?.instantiateViewController(withIdentifier: "Reader") as? NewsDetailViewController else { return }
         
         reader.article = articles[indexPath.row]
         present(reader, animated: true)

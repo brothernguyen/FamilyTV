@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let categories = ["Business", "Culture", "Sport", "Technology", "Travel"]
+    let categories = ["Movie", "Business", "Culture", "Sport", "Technology", "Travel"]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Typecast root view controller to be a tab bar controller
@@ -20,10 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var viewControllers = [UIViewController]()
             
             for cat in categories {
-                if let newController = tabBarController.storyboard?.instantiateViewController(withIdentifier: "Movies") as? ViewController {
-                    newController.title = cat
-                    viewControllers.append(newController)
+                if cat == "Movie" {
+                    
+                } else {
+                    if let newsController = tabBarController.storyboard?.instantiateViewController(withIdentifier: "News") as? NewsViewController {
+                        newsController.title = cat
+                        viewControllers.append(newsController)
+                    }
                 }
+                
             }
             
             viewControllers.append(createSearch(storyboard: tabBarController.storyboard))
@@ -56,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func createSearch(storyboard: UIStoryboard?) -> UIViewController {
         
-        guard let newsController = storyboard?.instantiateViewController(withIdentifier: "Movies") as? ViewController else { fatalError("Unable to instantiate a NewsController.")
+        guard let newsController = storyboard?.instantiateViewController(withIdentifier: "News") as? NewsViewController else { fatalError("Unable to instantiate a NewsController.")
         }
         
         let searchController = UISearchController(searchResultsController: newsController)

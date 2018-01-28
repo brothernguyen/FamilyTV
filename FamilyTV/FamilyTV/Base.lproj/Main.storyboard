@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--News-->
         <scene sceneID="nNh-td-DoJ">
             <objects>
-                <collectionViewController storyboardIdentifier="Movies" id="2qd-F4-dDE" customClass="ViewController" customModule="FamilyTV" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="News" id="2qd-F4-dDE" userLabel="News" customClass="NewsViewController" customModule="FamilyTV" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="KBC-Lb-Eu1">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,7 @@
                             <inset key="sectionInset" minX="80" minY="80" maxX="80" maxY="80"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="OXn-4y-Fk9" customClass="MovieCell" customModule="FamilyTV" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="OXn-4y-Fk9" customClass="NewsCell" customModule="FamilyTV" customModuleProvider="target">
                                 <rect key="frame" x="80" y="80" width="375" height="375"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -56,8 +56,8 @@
                                     <constraint firstAttribute="trailing" secondItem="L2D-r5-nhx" secondAttribute="trailing" id="j5I-Vf-hkG"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="movieImageView" destination="c6f-Jh-4BI" id="ZtT-b1-HIw"/>
-                                    <outlet property="movieTextLabel" destination="L2D-r5-nhx" id="nty-df-dUb"/>
+                                    <outlet property="newsImageView" destination="c6f-Jh-4BI" id="ZtT-b1-HIw"/>
+                                    <outlet property="newsTextLabel" destination="L2D-r5-nhx" id="nty-df-dUb"/>
                                     <outlet property="unfocusedConstraint" destination="L45-tX-zwD" id="AG1-4r-gj7"/>
                                 </connections>
                             </collectionViewCell>
@@ -88,15 +88,15 @@
             </objects>
             <point key="canvasLocation" x="-2021" y="-191"/>
         </scene>
-        <!--Reader View Controller-->
+        <!--News Detail View Controller-->
         <scene sceneID="GXR-va-8eX">
             <objects>
-                <viewController storyboardIdentifier="Reader" id="Xp6-uB-ljc" customClass="ReaderViewController" customModule="FamilyTV" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Reader" id="Xp6-uB-ljc" userLabel="News Detail View Controller" customClass="NewsDetailViewController" customModule="FamilyTV" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9hV-l9-gFi"/>
                         <viewControllerLayoutGuide type="bottom" id="bRj-qY-V0F"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Clj-QF-l6a">
+                    <view key="view" contentMode="scaleToFill" id="Clj-QF-l6a" userLabel="News Detail View">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

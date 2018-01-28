@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReaderViewController: UIViewController {
+class NewsDetailViewController: UIViewController {
     
     @IBOutlet var headLine: UILabel!
     @IBOutlet var imageView: RemoteImageView!
