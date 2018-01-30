@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC38DEFA2020B88C00BA2649 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38DEF92020B88C00BA2649 /* MovieCell.swift */; };
 		CC5E9E832004F15900209569 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5E9E822004F15900209569 /* AppDelegate.swift */; };
 		CC5E9E882004F15900209569 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC5E9E862004F15900209569 /* Main.storyboard */; };
 		CC5E9E8A2004F15900209569 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC5E9E892004F15900209569 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC38DEF92020B88C00BA2649 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		CC5E9E7F2004F15900209569 /* FamilyTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamilyTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5E9E822004F15900209569 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC5E9E872004F15900209569 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				CC7757A9201F6C6400B8FB63 /* MovieViewController.swift */,
+				CC38DEF92020B88C00BA2649 /* MovieCell.swift */,
 			);
 			path = Movie;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC7757A5201F6C0F00B8FB63 /* NewsDetailViewController.swift in Sources */,
+				CC38DEFA2020B88C00BA2649 /* MovieCell.swift in Sources */,
 				CC5E9E922004F2EB00209569 /* SwiftyJSON.swift in Sources */,
 				CC7757AA201F6C6400B8FB63 /* MovieViewController.swift in Sources */,
 				CC7757A7201F6C0F00B8FB63 /* NewsCell.swift in Sources */,

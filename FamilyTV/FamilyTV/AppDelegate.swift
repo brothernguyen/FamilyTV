@@ -21,7 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             for cat in categories {
                 if cat == "Movie" {
-                    
+                    if let movieController = tabBarController.storyboard?.instantiateViewController(withIdentifier: "Movie") as? MovieViewController {
+                        movieController.title = cat
+                        viewControllers.append(movieController)
+                    }
                 } else {
                     if let newsController = tabBarController.storyboard?.instantiateViewController(withIdentifier: "News") as? NewsViewController {
                         newsController.title = cat
