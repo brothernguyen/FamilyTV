@@ -122,9 +122,9 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="body" destination="JLE-MK-URz" id="e03-Jl-RkK"/>
-                        <outlet property="headLine" destination="0gp-8K-sNr" id="yyp-2M-zkw"/>
-                        <outlet property="imageView" destination="2Tm-5N-yis" id="kO4-AU-N4f"/>
+                        <outlet property="newsBody" destination="JLE-MK-URz" id="e03-Jl-RkK"/>
+                        <outlet property="newsHeadLine" destination="0gp-8K-sNr" id="yyp-2M-zkw"/>
+                        <outlet property="newsImageView" destination="2Tm-5N-yis" id="kO4-AU-N4f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yRy-9z-Mcu" userLabel="First Responder" sceneMemberID="firstResponder"/>

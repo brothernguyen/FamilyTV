@@ -68,9 +68,9 @@
 				CC5E9E822004F15900209569 /* AppDelegate.swift */,
 				CC5E9E862004F15900209569 /* Main.storyboard */,
 				CCD231A9201227C10019D2BA /* RemoteImageView.swift */,
-				CCCADA292013336700341717 /* wrapper.html */,
 				CC5E9E892004F15900209569 /* Assets.xcassets */,
 				CC5E9E8B2004F15900209569 /* Info.plist */,
+				CCCADA292013336700341717 /* wrapper.html */,
 				CC5E9E912004F2EB00209569 /* SwiftyJSON.swift */,
 			);
 			path = FamilyTV;

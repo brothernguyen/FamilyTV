@@ -10,9 +10,9 @@ import UIKit
 
 class NewsDetailViewController: UIViewController {
     
-    @IBOutlet var headLine: UILabel!
-    @IBOutlet var imageView: RemoteImageView!
-    @IBOutlet var body: UITextView!
+    @IBOutlet var newsHeadLine: UILabel!
+    @IBOutlet var newsImageView: RemoteImageView!
+    @IBOutlet var newsBody: UITextView!
     
     var article: JSON?
     
@@ -21,19 +21,19 @@ class NewsDetailViewController: UIViewController {
                 
         guard let article = article else { return }
         
-        body.panGestureRecognizer.allowedTouchTypes = [UITouchType.indirect.rawValue] as [NSNumber]
-        body.isSelectable = true
+        newsBody.panGestureRecognizer.allowedTouchTypes = [UITouchType.indirect.rawValue] as [NSNumber]
+        newsBody.isSelectable = true
         
         if let url = article["fields"]["thumbnail"].url {
             
-            imageView.load(url)
-            imageView.layer.borderColor = UIColor.darkGray.cgColor
-            imageView.layer.borderWidth = 2
-            imageView.layer.cornerRadius = 20
+            newsImageView.load(url)
+            newsImageView.layer.borderColor = UIColor.darkGray.cgColor
+            newsImageView.layer.borderWidth = 2
+            newsImageView.layer.cornerRadius = 20
         }
         
-        headLine.text = article["fields"]["headline"].stringValue
-        body.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.black]
+        newsHeadLine.text = article["fields"]["headline"].stringValue
+        newsBody.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.black]
         
         let articleBody = article["fields"]["body"].stringValue
         let formattedArticleBody = formatHTML(articleBody)
@@ -44,11 +44,11 @@ class NewsDetailViewController: UIViewController {
             
             if let bodyText = try? NSAttributedString(data: articleBodyData, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue],documentAttributes: nil) {
                 
-                body.attributedText = bodyText
+                newsBody.attributedText = bodyText
                 
             }
         }
-        body.font = UIFont.systemFont(ofSize: 40)
+        newsBody.font = UIFont.systemFont(ofSize: 40)
     }
     
     func formatHTML(_ html: String) -> String {        
