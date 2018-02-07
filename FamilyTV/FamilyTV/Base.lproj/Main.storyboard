@@ -73,6 +73,59 @@
             </objects>
             <point key="canvasLocation" x="874" y="-191"/>
         </scene>
+        <!--Movie View Controller-->
+        <scene sceneID="c0m-gg-3TS">
+            <objects>
+                <viewController storyboardIdentifier="Movie" id="ssz-Ee-cQj" customClass="MovieViewController" customModule="FamilyTV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sZ0-0D-5Pp"/>
+                        <viewControllerLayoutGuide type="bottom" id="qE4-SD-jBP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HT2-57-0CR">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQY-Ss-JSG">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ots-3e-EEa">
+                                        <rect key="frame" x="0.0" y="0.0" width="1920" height="500"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="500" id="nVZ-zq-ZAJ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FyZ-R9-Hjl" customClass="MovieCollectionView" customModule="FamilyTV" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="508" width="1920" height="572"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="572" id="7V1-Os-Xfl"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="FyZ-R9-Hjl" firstAttribute="top" secondItem="Ots-3e-EEa" secondAttribute="bottom" constant="8" symbolic="YES" id="3dQ-JX-Ug0"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ots-3e-EEa" secondAttribute="trailing" id="4hP-lQ-Xsm"/>
+                                    <constraint firstItem="Ots-3e-EEa" firstAttribute="leading" secondItem="oQY-Ss-JSG" secondAttribute="leading" id="7Vg-bC-eFw"/>
+                                    <constraint firstItem="Ots-3e-EEa" firstAttribute="top" secondItem="oQY-Ss-JSG" secondAttribute="top" id="DH6-On-uYt"/>
+                                    <constraint firstAttribute="bottom" secondItem="FyZ-R9-Hjl" secondAttribute="bottom" id="TnL-iU-AEb"/>
+                                    <constraint firstItem="Ots-3e-EEa" firstAttribute="trailing" secondItem="FyZ-R9-Hjl" secondAttribute="trailing" id="bJM-GL-jnf"/>
+                                    <constraint firstItem="Ots-3e-EEa" firstAttribute="centerX" secondItem="oQY-Ss-JSG" secondAttribute="centerX" id="lnK-rl-91Y"/>
+                                    <constraint firstItem="Ots-3e-EEa" firstAttribute="leading" secondItem="FyZ-R9-Hjl" secondAttribute="leading" id="uXt-z5-2ID"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="oQY-Ss-JSG" firstAttribute="top" secondItem="HT2-57-0CR" secondAttribute="top" id="MbK-rn-GAT"/>
+                            <constraint firstItem="oQY-Ss-JSG" firstAttribute="leading" secondItem="HT2-57-0CR" secondAttribute="leading" id="Qmx-yZ-AwS"/>
+                            <constraint firstAttribute="trailing" secondItem="oQY-Ss-JSG" secondAttribute="trailing" id="SCA-Zd-QTs"/>
+                            <constraint firstAttribute="bottom" secondItem="oQY-Ss-JSG" secondAttribute="bottom" id="sqs-VH-8to"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AJb-Jf-qpD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="874" y="1862"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="aKT-LY-BEJ">
             <objects>
@@ -87,46 +140,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9i-3Y-dIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1296" y="1335"/>
-        </scene>
-        <!--Movie-->
-        <scene sceneID="dZw-j2-2wz">
-            <objects>
-                <collectionViewController storyboardIdentifier="Movie" id="yFo-WL-S9L" userLabel="Movie" customClass="MovieViewController" customModule="FamilyTV" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="DBp-Cn-fu5">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HXC-Wn-U2j">
-                            <size key="itemSize" width="300" height="487"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="80" minY="600" maxX="80" maxY="100"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCell" id="nbP-3l-SrU" customClass="MovieCell" customModule="FamilyTV" customModuleProvider="target">
-                                <rect key="frame" x="80" y="600" width="300" height="487"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="487"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="m3W-kb-3bH">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="408"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                    </subviews>
-                                </view>
-                                <size key="customSize" width="300" height="487"/>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="yFo-WL-S9L" id="JrC-1h-KyF"/>
-                            <outlet property="delegate" destination="yFo-WL-S9L" id="kN6-vn-TVL"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D9x-Tj-FID" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="874" y="2541"/>
         </scene>
         <!--News Detail View Controller-->
         <scene sceneID="GXR-va-8eX">
