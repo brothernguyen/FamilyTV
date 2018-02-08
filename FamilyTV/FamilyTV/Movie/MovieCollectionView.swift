@@ -20,9 +20,6 @@ class MovieCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDat
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-        self.collectionView.register(UINib(nibName: "MovieCell", bundle:nil), forCellWithReuseIdentifier:"MovieCell");
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,6 +31,10 @@ class MovieCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDat
         Bundle.main.loadNibNamed("MovieCollectionView", owner: self, options: nil) 
         self.addSubview(contentView)
         
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.register(UINib(nibName: "MovieCell", bundle:nil), forCellWithReuseIdentifier:"MovieCell");
+        
 //        contentView.translatesAutoresizingMaskIntoConstraints = false
 //        contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
 //        contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
@@ -42,7 +43,7 @@ class MovieCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return 50
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

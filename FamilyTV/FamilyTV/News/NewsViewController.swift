@@ -17,23 +17,18 @@ class NewsViewController: UICollectionViewController, UISearchResultsUpdating {
         super.viewDidLoad()
         
         guard let title = title else { return }        
-        guard let url = URL(string: "https://content.guardianapis.com/\(title.lowercased())?api-key=\(apiKey)&show-fields=thumbnail,headline,standfirst,body") else { return }
-                
+        guard let url = URL(string: "https://content.guardianapis.com/\(title.lowercased())?api-key=\(apiKey)&show-fields=thumbnail,headline,standfirst,body") else { return }        
         DispatchQueue.global(qos: .userInteractive).async {
-            
             self.fetch(url)
         }
     }
     
     func fetch(_ url: URL) {
-        
         if let data = try? Data(contentsOf: url) {
             articles = JSON(data)["response"]["results"].arrayValue
-            
             DispatchQueue.main.async {
                 self.collectionView?.reloadData()
             }
-            
         } else {
             //something went wrong!
         }
@@ -51,9 +46,7 @@ class NewsViewController: UICollectionViewController, UISearchResultsUpdating {
         let thumbnail = newsItem["fields"]["thumbnail"].stringValue
         
         newsCell.newsTextLabel.text = title
-        
         if let imageURL = URL(string: thumbnail) {
-            
             newsCell.newsImageView.load(imageURL)
         }
         
@@ -68,17 +61,13 @@ class NewsViewController: UICollectionViewController, UISearchResultsUpdating {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        
         guard let text = searchController.searchBar.text else { return }
         if text.isEmpty {
             articles = [JSON]()
             collectionView?.reloadData()            
         } else {
-            
             guard let url = URL(string: "https://content.guardianapis.com/search?api-key=\(apiKey)&q=\(text)&show-fields=thumbnail,headline,standfirst,body") else { return }
-            
             DispatchQueue.global(qos: .userInteractive).async {
-                
                 self.fetch(url)
             }
         }

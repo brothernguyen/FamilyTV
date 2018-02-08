@@ -87,31 +87,7 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQY-Ss-JSG">
                                 <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
-                                <subviews>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="Ots-3e-EEa">
-                                        <rect key="frame" x="0.0" y="0.0" width="1920" height="500"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="500" id="nVZ-zq-ZAJ"/>
-                                        </constraints>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FyZ-R9-Hjl" customClass="MovieCollectionView" customModule="FamilyTV" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="500" width="1920" height="578"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="578" id="7V1-Os-Xfl"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="FyZ-R9-Hjl" firstAttribute="top" secondItem="Ots-3e-EEa" secondAttribute="bottom" id="3dQ-JX-Ug0"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ots-3e-EEa" secondAttribute="trailing" id="4hP-lQ-Xsm"/>
-                                    <constraint firstItem="Ots-3e-EEa" firstAttribute="leading" secondItem="oQY-Ss-JSG" secondAttribute="leading" id="7Vg-bC-eFw"/>
-                                    <constraint firstItem="Ots-3e-EEa" firstAttribute="top" secondItem="oQY-Ss-JSG" secondAttribute="top" id="DH6-On-uYt"/>
-                                    <constraint firstAttribute="bottom" secondItem="FyZ-R9-Hjl" secondAttribute="bottom" constant="2" id="TnL-iU-AEb"/>
-                                    <constraint firstItem="Ots-3e-EEa" firstAttribute="trailing" secondItem="FyZ-R9-Hjl" secondAttribute="trailing" id="bJM-GL-jnf"/>
-                                    <constraint firstItem="Ots-3e-EEa" firstAttribute="centerX" secondItem="oQY-Ss-JSG" secondAttribute="centerX" id="lnK-rl-91Y"/>
-                                    <constraint firstItem="Ots-3e-EEa" firstAttribute="leading" secondItem="FyZ-R9-Hjl" secondAttribute="leading" id="uXt-z5-2ID"/>
-                                </constraints>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </scrollView>
                         </subviews>
                         <constraints>
@@ -121,6 +97,9 @@
                             <constraint firstAttribute="bottom" secondItem="oQY-Ss-JSG" secondAttribute="bottom" id="sqs-VH-8to"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="oQY-Ss-JSG" id="rDG-FL-PAj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AJb-Jf-qpD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,7 +165,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="banner" width="1920" height="500"/>
         <image name="loading" width="375" height="210"/>
     </resources>
 </document>
