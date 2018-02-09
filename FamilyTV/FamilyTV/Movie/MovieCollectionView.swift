@@ -12,6 +12,8 @@ class MovieCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDat
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    var movieUrl: URL?
+    var movies = [JSON]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,21 +37,39 @@ class MovieCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDat
         self.collectionView.dataSource = self
         self.collectionView.register(UINib(nibName: "MovieCell", bundle:nil), forCellWithReuseIdentifier:"MovieCell");
         
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-//        contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-//        contentView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-//        contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+    }
+    
+    func loadData(url: URL) {        
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.fetch(url)
+        }
+    }
+    
+    func fetch(_ url: URL) {
+        if let data = try? Data(contentsOf: url) {
+            movies = JSON(data)["feed"]["entry"].arrayValue
+            debugPrint("==>summary: ",movies[0]["im:image"][2]["label"].stringValue)
+            DispatchQueue.main.async {
+                self.collectionView?.reloadData()
+            }
+        } else {
+            //something went wrong!
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as? MovieCell else { fatalError("Couldn't dequeue a cell") }
+        guard let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as? MovieCell else { fatalError("Couldn't dequeue a cell") }
+        let movieItem = movies[indexPath.row]
+        let thumbnail = movieItem["im:image"][2]["label"].stringValue
+        if let imageURL = URL(string: thumbnail) {
+            movieCell.loadingImg.load(imageURL)
+        }
         
-        return newsCell
+        return movieCell
     }
     
 }

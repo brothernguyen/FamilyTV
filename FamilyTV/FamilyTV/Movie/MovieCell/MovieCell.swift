@@ -10,13 +10,12 @@ import UIKit
 
 class MovieCell: UICollectionViewCell {
     
-    @IBOutlet weak var loadingImg: UIImageView!
+    @IBOutlet weak var loadingImg: RemoteImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.loadingImg.adjustsImageWhenAncestorFocused = true
     }
-    
     
     override var canBecomeFocused : Bool {
         return true
