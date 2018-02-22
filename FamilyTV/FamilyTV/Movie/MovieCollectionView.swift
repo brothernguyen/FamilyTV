@@ -12,8 +12,12 @@ class MovieCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDat
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet var categoryLabel: UILabel!
+    
     var movieUrl: URL?
     var movies = [JSON]()
+    var catMovies = [JSON]()
+    var category = String()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,7 +40,6 @@ class MovieCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDat
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.register(UINib(nibName: "MovieCell", bundle:nil), forCellWithReuseIdentifier:"MovieCell");
-        
     }
     
     func loadData(url: URL) {        
@@ -48,7 +51,12 @@ class MovieCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDat
     func fetch(_ url: URL) {
         if let data = try? Data(contentsOf: url) {
             movies = JSON(data)["feed"]["entry"].arrayValue
-            debugPrint("==>summary: ",movies[0]["im:image"][2]["label"].stringValue)
+            for movie in movies {
+                let cat = movie["category"]["attributes"]["label"].stringValue
+                if cat == self.category {
+                    catMovies.append(movie)
+                }
+            }
             DispatchQueue.main.async {
                 self.collectionView?.reloadData()
             }
@@ -58,18 +66,16 @@ class MovieCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies.count
+        return catMovies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as? MovieCell else { fatalError("Couldn't dequeue a cell") }
-        let movieItem = movies[indexPath.row]
+        let movieItem = catMovies[indexPath.row]
         let thumbnail = movieItem["im:image"][2]["label"].stringValue
         if let imageURL = URL(string: thumbnail) {
             movieCell.loadingImg.load(imageURL)
-        }
-        
+        }        
         return movieCell
     }
-    
 }

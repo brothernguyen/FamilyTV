@@ -11,26 +11,60 @@ import UIKit
 class MovieViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
-    var sections = [MovieCollectionView]()    
+    var sections = [MovieCollectionView]()
+    var movies = [JSON]()
+    var categories = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(tvOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        }
      
         guard let url = URL(string: "http://itunes.apple.com/us/rss/topmovies/limit=200/json") else { return }
         
-        let img = UIImageView(frame: CGRect(x: 0, y: -50, width: 1920, height: 500))
+        //Load categories
+        self.loadData(url: url)
+        
+        let img = UIImageView(frame: CGRect(x: 0, y: 0, width: 1920, height: 500))
         img.image = UIImage(named: "banner.png")
         scrollView.addSubview(img)
-        
-        var yPosition = 450
-        for i in 0..<5 {
-            let movieView = MovieCollectionView.init(frame: CGRect(x: 0, y: yPosition, width: 1920, height: 578))
-            movieView.loadData(url: url)
-            scrollView.addSubview(movieView)
-            yPosition += 650
-            sections.append(movieView)
-        }
-        scrollView.contentSize = CGSize(width: 1920, height: yPosition + 600)        
-                
     }
+    
+    func loadData(url: URL) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.fetch(url)
+        }
+    }
+    
+    func fetch(_ url: URL) {
+        if let data = try? Data(contentsOf: url) {
+            movies = JSON(data)["feed"]["entry"].arrayValue
+            for movie in movies {
+                let cat = movie["category"]["attributes"]["label"].stringValue
+                categories.append(cat)
+            }
+            
+            //Remove duplicated elements
+            categories = Array(Set(categories))            
+                        
+            DispatchQueue.main.async {
+                var yPosition = 500
+                for i in 0..<self.categories.count {
+                    let movieView = MovieCollectionView.init(frame: CGRect(x: 0, y: yPosition, width: 1920, height: 578))
+                    movieView.categoryLabel.text = self.categories[i]
+                    movieView.category = self.categories[i]
+                    movieView.loadData(url: url)                    
+                    self.scrollView.addSubview(movieView)
+                    yPosition += 650
+                    self.sections.append(movieView)
+                }
+                self.scrollView.contentSize = CGSize(width: 1920, height: yPosition + 600)
+            }
+        } else {
+            //something went wrong!
+        }
+    }
+        
 }

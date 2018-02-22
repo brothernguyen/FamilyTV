@@ -21,8 +21,35 @@
 		CC5E9E882004F15900209569 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC5E9E862004F15900209569 /* Main.storyboard */; };
 		CC5E9E8A2004F15900209569 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC5E9E892004F15900209569 /* Assets.xcassets */; };
 		CC5E9E922004F2EB00209569 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5E9E912004F2EB00209569 /* SwiftyJSON.swift */; };
+		CC862C42203082EE007E2B98 /* TVServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC862C41203082EE007E2B98 /* TVServices.framework */; };
+		CC862C45203082EE007E2B98 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC862C44203082EE007E2B98 /* ServiceProvider.swift */; };
+		CC862C49203082EE007E2B98 /* TopShelf.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CC862C3F203082EE007E2B98 /* TopShelf.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CCD231AA201227C10019D2BA /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD231A9201227C10019D2BA /* RemoteImageView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CC862C47203082EE007E2B98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC5E9E772004F15900209569 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC862C3E203082EE007E2B98;
+			remoteInfo = TopShelf;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CC862C4D203082EE007E2B98 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CC862C49203082EE007E2B98 /* TopShelf.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6850E9FE20295C2600D2E3A7 /* MovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +68,10 @@
 		CC5E9E892004F15900209569 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC5E9E8B2004F15900209569 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC5E9E912004F2EB00209569 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		CC862C3F203082EE007E2B98 /* TopShelf.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TopShelf.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC862C41203082EE007E2B98 /* TVServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVServices.framework; path = System/Library/Frameworks/TVServices.framework; sourceTree = SDKROOT; };
+		CC862C44203082EE007E2B98 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		CC862C46203082EE007E2B98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCCADA292013336700341717 /* wrapper.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = wrapper.html; sourceTree = "<group>"; };
 		CCD231A9201227C10019D2BA /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,6 +81,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC862C3C203082EE007E2B98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC862C42203082EE007E2B98 /* TVServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				CC5E9E812004F15900209569 /* FamilyTV */,
+				CC862C43203082EE007E2B98 /* TopShelf */,
+				CC862C40203082EE007E2B98 /* Frameworks */,
 				CC5E9E802004F15900209569 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				CC5E9E7F2004F15900209569 /* FamilyTV.app */,
+				CC862C3F203082EE007E2B98 /* TopShelf.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,6 +170,23 @@
 			path = Movie;
 			sourceTree = "<group>";
 		};
+		CC862C40203082EE007E2B98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC862C41203082EE007E2B98 /* TVServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CC862C43203082EE007E2B98 /* TopShelf */ = {
+			isa = PBXGroup;
+			children = (
+				CC862C44203082EE007E2B98 /* ServiceProvider.swift */,
+				CC862C46203082EE007E2B98 /* Info.plist */,
+			);
+			path = TopShelf;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,15 +197,34 @@
 				CC5E9E7B2004F15900209569 /* Sources */,
 				CC5E9E7C2004F15900209569 /* Frameworks */,
 				CC5E9E7D2004F15900209569 /* Resources */,
+				CC862C4D203082EE007E2B98 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CC862C48203082EE007E2B98 /* PBXTargetDependency */,
 			);
 			name = FamilyTV;
 			productName = FamilyTV;
 			productReference = CC5E9E7F2004F15900209569 /* FamilyTV.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CC862C3E203082EE007E2B98 /* TopShelf */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC862C4C203082EE007E2B98 /* Build configuration list for PBXNativeTarget "TopShelf" */;
+			buildPhases = (
+				CC862C3B203082EE007E2B98 /* Sources */,
+				CC862C3C203082EE007E2B98 /* Frameworks */,
+				CC862C3D203082EE007E2B98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TopShelf;
+			productName = TopShelf;
+			productReference = CC862C3F203082EE007E2B98 /* TopShelf.appex */;
+			productType = "com.apple.product-type.tv-app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -159,6 +237,10 @@
 				ORGANIZATIONNAME = "Tuan Anh";
 				TargetAttributes = {
 					CC5E9E7E2004F15900209569 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					CC862C3E203082EE007E2B98 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 					};
@@ -178,6 +260,7 @@
 			projectRoot = "";
 			targets = (
 				CC5E9E7E2004F15900209569 /* FamilyTV */,
+				CC862C3E203082EE007E2B98 /* TopShelf */,
 			);
 		};
 /* End PBXProject section */
@@ -193,6 +276,13 @@
 				6850EA132029658A00D2E3A7 /* banner@2x.png in Resources */,
 				6850EA142029658A00D2E3A7 /* banner.png in Resources */,
 				68FB371E202AB1ED002CE32F /* MovieCollectionView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC862C3D203082EE007E2B98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +305,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CC862C3B203082EE007E2B98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC862C45203082EE007E2B98 /* ServiceProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CC862C48203082EE007E2B98 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC862C3E203082EE007E2B98 /* TopShelf */;
+			targetProxy = CC862C47203082EE007E2B98 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CC5E9E862004F15900209569 /* Main.storyboard */ = {
@@ -337,6 +443,7 @@
 		CC5E9E8F2004F15900209569 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
@@ -354,6 +461,7 @@
 		CC5E9E902004F15900209569 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
@@ -365,6 +473,38 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Release;
+		};
+		CC862C4A203082EE007E2B98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NPA85SZBDY;
+				INFOPLIST_FILE = TopShelf/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = anh.FamilyTV.TopShelf;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		CC862C4B203082EE007E2B98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NPA85SZBDY;
+				INFOPLIST_FILE = TopShelf/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = anh.FamilyTV.TopShelf;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
 		};
@@ -385,6 +525,15 @@
 			buildConfigurations = (
 				CC5E9E8F2004F15900209569 /* Debug */,
 				CC5E9E902004F15900209569 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC862C4C203082EE007E2B98 /* Build configuration list for PBXNativeTarget "TopShelf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC862C4A203082EE007E2B98 /* Debug */,
+				CC862C4B203082EE007E2B98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
