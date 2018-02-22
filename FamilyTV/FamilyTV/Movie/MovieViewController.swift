@@ -52,15 +52,15 @@ class MovieViewController: UIViewController {
             DispatchQueue.main.async {
                 var yPosition = 500
                 for i in 0..<self.categories.count {
-                    let movieView = MovieCollectionView.init(frame: CGRect(x: 0, y: yPosition, width: 1920, height: 578))
+                    let movieView = MovieCollectionView.init(frame: CGRect(x: 0, y: yPosition, width: 1920, height: 450))
                     movieView.categoryLabel.text = self.categories[i]
                     movieView.category = self.categories[i]
                     movieView.loadData(url: url)                    
                     self.scrollView.addSubview(movieView)
-                    yPosition += 650
+                    yPosition += 550
                     self.sections.append(movieView)
                 }
-                self.scrollView.contentSize = CGSize(width: 1920, height: yPosition + 600)
+                self.scrollView.contentSize = CGSize(width: 1920, height: yPosition + 200)
             }
         } else {
             //something went wrong!
