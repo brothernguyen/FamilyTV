@@ -11,6 +11,7 @@ import UIKit
 class MovieCell: UICollectionViewCell {
     
     @IBOutlet weak var loadingImg: RemoteImageView!
+    @IBOutlet var movieTitle: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

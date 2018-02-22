@@ -77,7 +77,8 @@ class MovieCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDat
         let thumbnail = movieItem["im:image"][2]["label"].stringValue
         if let imageURL = URL(string: thumbnail) {
             movieCell.loadingImg.load(imageURL)
-        }        
+        }
+        movieCell.movieTitle.text = movieItem["title"]["label"].stringValue
         return movieCell
     }
     
