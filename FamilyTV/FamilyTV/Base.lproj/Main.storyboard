@@ -163,6 +163,38 @@
             </objects>
             <point key="canvasLocation" x="3208" y="-191"/>
         </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="Ybe-Xl-2v5">
+            <objects>
+                <viewController storyboardIdentifier="MovieDetail" id="yPO-U6-mCx" customClass="MovieDetailViewController" customModule="FamilyTV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YlL-Es-xyU"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Vx-Re-0Hu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SGA-BV-Ex9">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFD-7w-lHN">
+                                <rect key="frame" x="791" y="453" width="338" height="174"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="PLAY"/>
+                                <connections>
+                                    <action selector="playMovie:" destination="yPO-U6-mCx" eventType="primaryActionTriggered" id="ACi-fu-8fP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="playMovieButton" destination="jFD-7w-lHN" id="m0f-q4-rSt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6mf-YN-bSp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3333" y="1862"/>
+        </scene>
     </scenes>
     <resources>
         <image name="loading" width="375" height="210"/>
