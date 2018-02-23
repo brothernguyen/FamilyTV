@@ -18,26 +18,36 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionReusableView opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCell" id="mU1-95-6SO" customClass="MovieCell" customModule="FamilyTV" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="226" height="380"/>
+            <rect key="frame" x="0.0" y="0.0" width="226" height="400"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="KGp-CH-DIa" customClass="RemoteImageView" customModule="FamilyTV" customModuleProvider="target">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGp-CH-DIa" customClass="RemoteImageView" customModule="FamilyTV" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="226" height="340"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="340" id="yOz-zE-7Gp"/>
+                    </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATd-Hy-TcX">
-                    <rect key="frame" x="0.0" y="340" width="226" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATd-Hy-TcX">
+                    <rect key="frame" x="0.0" y="355" width="226" height="30"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <viewLayoutGuide key="safeArea" id="07G-Ic-rTr"/>
+            <constraints>
+                <constraint firstItem="KGp-CH-DIa" firstAttribute="trailing" secondItem="mU1-95-6SO" secondAttribute="trailing" id="6iX-yL-dBE"/>
+                <constraint firstAttribute="top" secondItem="KGp-CH-DIa" secondAttribute="top" id="N6W-Zc-c20"/>
+                <constraint firstItem="ATd-Hy-TcX" firstAttribute="trailing" secondItem="mU1-95-6SO" secondAttribute="trailing" id="Uqh-nS-jPl"/>
+                <constraint firstItem="ATd-Hy-TcX" firstAttribute="top" secondItem="KGp-CH-DIa" secondAttribute="bottom" constant="15" id="YIr-8P-EQu"/>
+                <constraint firstAttribute="leading" secondItem="ATd-Hy-TcX" secondAttribute="leading" id="n8C-4m-cka"/>
+                <constraint firstAttribute="leading" secondItem="KGp-CH-DIa" secondAttribute="leading" id="wIG-Ck-Wo7"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="4W8-gb-Tr3"/>
             <connections>
                 <outlet property="loadingImg" destination="KGp-CH-DIa" id="PVL-db-mY6"/>
                 <outlet property="movieTitle" destination="ATd-Hy-TcX" id="viN-Je-tQn"/>
+                <outlet property="unfocusedConstraint" destination="YIr-8P-EQu" id="Zjq-dg-UHt"/>
             </connections>
             <point key="canvasLocation" x="5" y="-92"/>
         </collectionReusableView>
