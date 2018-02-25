@@ -13,15 +13,28 @@ import AVFoundation
 class MovieDetailViewController: UIViewController {
 
     @IBOutlet var playMovieButton: UIButton!
-    var movieUrl: URL?
+    @IBOutlet var movieTitle: UILabel!
+    @IBOutlet var price: UILabel!
+    @IBOutlet var img: RemoteImageView!
+    
+    var movieDetail = JSON()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.initLayout()
+    }
+    
+    func initLayout() {
+        movieTitle.text = movieDetail["im:name"]["label"].stringValue
+        price.text = movieDetail["im:price"]["label"].stringValue
+        let thumbnail = movieDetail["im:image"][2]["label"].stringValue
+        if let imageURL = URL(string: thumbnail) {
+            img.load(imageURL)
+        }
     }
 
     @IBAction func playMovie(_ sender: Any) {
-        guard let movieUrl = self.movieUrl else { return }
+        guard let movieUrl = URL(string: movieDetail["link"][1]["attributes"]["href"].stringValue) else { return }
         let player = AVPlayer(url: movieUrl)
         let playerViewController = AVPlayerViewController()
         playerViewController.player = player

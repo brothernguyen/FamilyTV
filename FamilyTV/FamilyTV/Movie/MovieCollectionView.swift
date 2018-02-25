@@ -85,7 +85,7 @@ class MovieCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let movieItem = catMovies[indexPath.row]
-        guard let videoUrl = URL(string: movieItem["link"][1]["attributes"]["href"].stringValue) else { return }
+//        guard let videoUrl = URL(string: movieItem["link"][1]["attributes"]["href"].stringValue) else { return }
 
 //        let player = AVPlayer(url: videoUrl)
 //        let playerViewController = AVPlayerViewController()
@@ -97,7 +97,7 @@ class MovieCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDat
 //        }
         
         let detailViewController:MovieDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieDetail") as! MovieDetailViewController
-        detailViewController.movieUrl = videoUrl
+        detailViewController.movieDetail = movieItem
         guard let topViewController = UIApplication.topViewController() else { return }
         topViewController.present(detailViewController, animated: true)
     }
