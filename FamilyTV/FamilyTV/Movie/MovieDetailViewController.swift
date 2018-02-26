@@ -22,6 +22,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var releaseDate: UILabel!
     
     var movieDetail = JSON()
+    var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class MovieDetailViewController: UIViewController {
     }
     
     func initLayout() {
+        
         movieTitle.text = movieDetail["im:name"]["label"].stringValue
         price.text = "Available to buy on iTunes for " + movieDetail["im:price"]["label"].stringValue
         category.text = movieDetail["category"]["attributes"]["label"].stringValue
@@ -43,8 +45,26 @@ class MovieDetailViewController: UIViewController {
         let thumbnail = movieDetail["im:image"][2]["label"].stringValue
         if let imageURL = URL(string: thumbnail) {
             img.load(imageURL)
+            self.image = img.image
         }
+        
         releaseDate.text = movieDetail["im:releaseDate"]["attributes"]["label"].stringValue
+        
+        //Blur effect
+        let imageView = UIImageView(image: self.image)
+        imageView.frame = view.bounds
+        imageView.contentMode = .scaleToFill
+        view.addSubview(imageView)
+        
+        
+        
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+        blurredEffectView.frame = imageView.bounds
+        view.addSubview(blurredEffectView)
+        view.sendSubview(toBack: blurredEffectView)
+        view.sendSubview(toBack: imageView)
+        
     }
 
     @IBAction func playMovie(_ sender: Any) {
