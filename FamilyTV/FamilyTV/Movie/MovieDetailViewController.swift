@@ -16,6 +16,10 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet var movieTitle: UILabel!
     @IBOutlet var price: UILabel!
     @IBOutlet var img: RemoteImageView!
+    @IBOutlet weak var summary: UITextView!
+    @IBOutlet weak var category: UILabel!
+    @IBOutlet weak var artist: UILabel!
+    @IBOutlet weak var releaseDate: UILabel!
     
     var movieDetail = JSON()
     
@@ -26,11 +30,21 @@ class MovieDetailViewController: UIViewController {
     
     func initLayout() {
         movieTitle.text = movieDetail["im:name"]["label"].stringValue
-        price.text = movieDetail["im:price"]["label"].stringValue
+        price.text = "Available to buy on iTunes for " + movieDetail["im:price"]["label"].stringValue
+        category.text = movieDetail["category"]["attributes"]["label"].stringValue
+        artist.text = movieDetail["im:artist"]["label"].stringValue
+        
+        summary.isSelectable = true
+        summary.isScrollEnabled = true
+        summary.isUserInteractionEnabled = true
+        summary.panGestureRecognizer.allowedTouchTypes = [NSNumber(value: UITouchType.indirect.rawValue)]
+        summary.text = movieDetail["summary"]["label"].stringValue
+        
         let thumbnail = movieDetail["im:image"][2]["label"].stringValue
         if let imageURL = URL(string: thumbnail) {
             img.load(imageURL)
         }
+        releaseDate.text = movieDetail["im:releaseDate"]["attributes"]["label"].stringValue
     }
 
     @IBAction func playMovie(_ sender: Any) {
