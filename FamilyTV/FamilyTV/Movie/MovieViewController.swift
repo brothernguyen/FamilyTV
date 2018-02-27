@@ -30,6 +30,21 @@ class MovieViewController: UIViewController {
         let img = UIImageView(frame: CGRect(x: 0, y: 0, width: 1920, height: 500))
         img.image = UIImage(named: "banner.png")
         scrollView.addSubview(img)
+        
+        //Blur effect
+        let imageView = UIImageView(image: UIImage(named: "banner.png"))        
+        imageView.frame = view.bounds
+        imageView.contentMode = .scaleToFill
+        view.addSubview(imageView)
+        
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+        blurredEffectView.frame = imageView.bounds
+        view.addSubview(blurredEffectView)
+        
+        view.sendSubview(toBack: blurredEffectView)
+        view.sendSubview(toBack: imageView)
+        
     }
     
     func loadData(url: URL) {
@@ -52,7 +67,7 @@ class MovieViewController: UIViewController {
             DispatchQueue.main.async {
                 var yPosition = 500
                 for i in 0..<self.categories.count {
-                    let movieView = MovieCollectionView.init(frame: CGRect(x: 0, y: yPosition, width: 1920, height: 520))
+                    let movieView = MovieCollectionView.init(frame: CGRect(x: 0, y: yPosition, width: 1920, height: 520))                    
                     movieView.categoryLabel.text = self.categories[i]
                     movieView.category = self.categories[i]
                     movieView.loadData(url: url)                    

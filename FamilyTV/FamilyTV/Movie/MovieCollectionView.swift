@@ -38,7 +38,7 @@ class MovieCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDat
     private func commonInit() {
         Bundle.main.loadNibNamed("MovieCollectionView", owner: self, options: nil) 
         self.addSubview(contentView)
-        
+                
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.register(UINib(nibName: "MovieCell", bundle:nil), forCellWithReuseIdentifier:"MovieCell");

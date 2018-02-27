@@ -51,12 +51,10 @@ class MovieDetailViewController: UIViewController {
         releaseDate.text = movieDetail["im:releaseDate"]["attributes"]["label"].stringValue
         
         //Blur effect
-        let imageView = UIImageView(image: self.image)
+        let imageView = UIImageView(image: self.image)       
         imageView.frame = view.bounds
         imageView.contentMode = .scaleToFill
         view.addSubview(imageView)
-        
-        
         
         let blurEffect = UIBlurEffect(style: .dark)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
