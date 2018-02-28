@@ -15,6 +15,8 @@
 		6850EA142029658A00D2E3A7 /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 6850EA122029658A00D2E3A7 /* banner.png */; };
 		68A9BCCD202C39D100026882 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A9BCCB202C39D100026882 /* MovieCell.swift */; };
 		68A9BCCE202C39D100026882 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68A9BCCC202C39D100026882 /* MovieCell.xib */; };
+		68F995B020456BA100C5CDFA /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 68B2EA4B20455818008BD00A /* background.png */; };
+		68F995B120456BA100C5CDFA /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 68361C042045654A00CACF6C /* background@2x.png */; };
 		68FB371E202AB1ED002CE32F /* MovieCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68FB371D202AB1ED002CE32F /* MovieCollectionView.xib */; };
 		68FB3720202AB9A1002CE32F /* MovieCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FB371F202AB9A1002CE32F /* MovieCollectionView.swift */; };
 		CC4677DC20405393007AF0FB /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4677DB20405393007AF0FB /* MovieDetailViewController.swift */; };
@@ -53,6 +55,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		68361C042045654A00CACF6C /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		6850E9FE20295C2600D2E3A7 /* MovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		6850EA0220295C5E00D2E3A7 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		6850EA0320295C5E00D2E3A7 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 		6850EA122029658A00D2E3A7 /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
 		68A9BCCB202C39D100026882 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		68A9BCCC202C39D100026882 /* MovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
+		68B2EA4B20455818008BD00A /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		68FB371D202AB1ED002CE32F /* MovieCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionView.xib; sourceTree = "<group>"; };
 		68FB371F202AB9A1002CE32F /* MovieCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionView.swift; sourceTree = "<group>"; };
 		CC4677DB20405393007AF0FB /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 			children = (
 				6850EA122029658A00D2E3A7 /* banner.png */,
 				6850EA112029658A00D2E3A7 /* banner@2x.png */,
+				68B2EA4B20455818008BD00A /* background.png */,
+				68361C042045654A00CACF6C /* background@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -273,6 +279,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68F995B020456BA100C5CDFA /* background.png in Resources */,
+				68F995B120456BA100C5CDFA /* background@2x.png in Resources */,
 				68A9BCCE202C39D100026882 /* MovieCell.xib in Resources */,
 				CC5E9E8A2004F15900209569 /* Assets.xcassets in Resources */,
 				CC5E9E882004F15900209569 /* Main.storyboard in Resources */,

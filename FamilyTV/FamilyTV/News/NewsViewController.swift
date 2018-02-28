@@ -15,6 +15,19 @@ class NewsViewController: UICollectionViewController, UISearchResultsUpdating {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        //Blur effect
+        let imageView = UIImageView(image: UIImage(named: "background.png"))
+        imageView.frame = view.bounds
+        imageView.contentMode = .scaleToFill
+        view.addSubview(imageView)
+        
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+        blurredEffectView.frame = imageView.bounds
+        view.addSubview(blurredEffectView)
+        view.sendSubview(toBack: blurredEffectView)
+        view.sendSubview(toBack: imageView)
         
         guard let title = title else { return }        
         guard let url = URL(string: "https://content.guardianapis.com/\(title.lowercased())?api-key=\(apiKey)&show-fields=thumbnail,headline,standfirst,body") else { return }        
