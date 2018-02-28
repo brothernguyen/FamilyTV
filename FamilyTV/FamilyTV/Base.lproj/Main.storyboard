@@ -286,6 +286,16 @@
             </objects>
             <point key="canvasLocation" x="3333" y="1862"/>
         </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="k3J-KT-DtH">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="DOo-Fd-JN6" customClass="MoviePlayerViewController" customModule="FamilyTV" customModuleProvider="target" sceneMemberID="viewController">
+                    <size key="freeformSize" width="1920" height="1080"/>
+                </avPlayerViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O1n-74-vLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5842" y="1854"/>
+        </scene>
     </scenes>
     <resources>
         <image name="loading" width="375" height="210"/>

@@ -21,16 +21,19 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var artist: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
     
-    var movieDetail = JSON()
+    var movieIndex = 0
+    var catMovies = [JSON]()
     var image: UIImage?
+    var playerViewController: MoviePlayerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.playerViewController = MoviePlayerViewController()
         self.initLayout()
     }
-    
-    func initLayout() {
         
+    func initLayout() {
+        let movieDetail = catMovies[movieIndex]
         movieTitle.text = movieDetail["im:name"]["label"].stringValue
         price.text = "Available to buy on iTunes for " + movieDetail["im:price"]["label"].stringValue
         category.text = movieDetail["category"]["attributes"]["label"].stringValue
@@ -62,19 +65,42 @@ class MovieDetailViewController: UIViewController {
         view.addSubview(blurredEffectView)
         view.sendSubview(toBack: blurredEffectView)
         view.sendSubview(toBack: imageView)
-        
     }
 
     @IBAction func playMovie(_ sender: Any) {
-        guard let movieUrl = URL(string: movieDetail["link"][1]["attributes"]["href"].stringValue) else { return }
-        let player = AVPlayer(url: movieUrl)
-        let playerViewController = AVPlayerViewController()
-        playerViewController.player = player
-        
+        guard let movieUrl = URL(string: catMovies[movieIndex]["link"][1]["attributes"]["href"].stringValue) else { return }
+                
+        guard let playerViewController = self.playerViewController else { return }
+        playerViewController.player = AVPlayer(url: movieUrl)        
         guard let topViewController = UIApplication.topViewController() else { return }
+                
         topViewController.present(playerViewController, animated: true) {
             playerViewController.player!.play()
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(MovieDetailViewController.movieEnded), name:NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+    }
+    
+    @objc func movieEnded() {
+        debugPrint("==>Player stopped!!!")
+        //removePlayer()
+        //playerViewController?.player?.seek(to: kCMTimeZero)
+        //playerViewController.player?.play()
+        
+        //Play next movie
+        self.movieIndex += 1
+        guard let movieUrl = URL(string: catMovies[movieIndex]["link"][1]["attributes"]["href"].stringValue) else { return }
+        let player = AVPlayer(url: movieUrl)
+        guard let playerViewController = self.playerViewController else { return }
+        playerViewController.player = player
+        playerViewController.view.alpha = 0.3
+        playerViewController.player!.play()
+        //playerViewController.player?.pause()
+    }
+    
+    func removePlayer() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+       dismiss(animated: true, completion: nil)
+    
     }
     
     override func didReceiveMemoryWarning() {
