@@ -12,36 +12,44 @@ import AVFoundation
 
 class MoviePlayerViewController: AVPlayerViewController {
     
+    let avPlayer = AVPlayer()
+    var avPlayerLayer: AVPlayerLayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Label
-//        let nextMovie = UILabel(frame: CGRect(x: 660, y: 400, width: 600, height: 350))
-//        nextMovie.backgroundColor = UIColor.lightGray
-//        nextMovie.alpha = 0.8
-//        nextMovie.textColor = UIColor.darkGray
-//        nextMovie.textAlignment = .center
-//        nextMovie.text = "Next movie plays in.. 10s"
-//        nextMovie.isHidden = true
-//        self.contentOverlayView?.addSubview(nextMovie)
+        let nextMovie = UILabel(frame: CGRect(x: 1450, y: 150, width: 400, height: 50))
+        nextMovie.backgroundColor = UIColor.black
+        nextMovie.alpha = 0.3
+        nextMovie.textColor = UIColor.white
+        nextMovie.font = nextMovie.font.withSize(30)
+        nextMovie.textAlignment = .center
+        nextMovie.text = "Next movie plays in..10s"
         
-        // Do any additional setup after loading the view.
+        avPlayerLayer = AVPlayerLayer(player: avPlayer)
+        avPlayerLayer.frame = CGRect(x: 1450, y: 150, width: 400, height: 240)
+        avPlayerLayer.videoGravity = .resize
+        avPlayerLayer.opacity = 0.7
+        
+        self.contentOverlayView?.layer.insertSublayer(avPlayerLayer, at: 0)
+        self.view.addSubview(nextMovie)
+        
+        let url = NSURL(string: "https://content.jwplatform.com/manifests/vM7nH0Kl.m3u8")
+        let playerItem = AVPlayerItem(url: url! as URL)
+        avPlayer.replaceCurrentItem(with: playerItem)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        avPlayer.play()
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        // Layout subviews manually
+        
     }
-    */
-
+    
 }
