@@ -77,30 +77,32 @@ class MovieDetailViewController: UIViewController {
         topViewController.present(playerViewController, animated: true) {
             playerViewController.player!.play()
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(MovieDetailViewController.movieEnded), name:NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+        
+        let currentItem = playerViewController.player?.currentItem
+        let duration = currentItem?.duration
+        debugPrint("==>duration: ", CMTimeGetSeconds(duration!))
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(MovieDetailViewController.movieEnded), name:NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)                
     }
     
     @objc func movieEnded() {
-        debugPrint("==>Player stopped!!!")
-        //removePlayer()
-        //playerViewController?.player?.seek(to: kCMTimeZero)
-        //playerViewController.player?.play()
         
         //Play next movie
         self.movieIndex += 1
+        if self.movieIndex == catMovies.count {
+            removePlayer()
+            return
+        }
         guard let movieUrl = URL(string: catMovies[movieIndex]["link"][1]["attributes"]["href"].stringValue) else { return }
         let player = AVPlayer(url: movieUrl)
         guard let playerViewController = self.playerViewController else { return }
         playerViewController.player = player
-        playerViewController.view.alpha = 0.3
         playerViewController.player!.play()
-        //playerViewController.player?.pause()
     }
     
     func removePlayer() {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
        dismiss(animated: true, completion: nil)
-    
     }
     
     override func didReceiveMemoryWarning() {

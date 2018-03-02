@@ -11,10 +11,19 @@ import AVKit
 import AVFoundation
 
 class MoviePlayerViewController: AVPlayerViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.yellow      
+        
+        //Label
+//        let nextMovie = UILabel(frame: CGRect(x: 660, y: 400, width: 600, height: 350))
+//        nextMovie.backgroundColor = UIColor.lightGray
+//        nextMovie.alpha = 0.8
+//        nextMovie.textColor = UIColor.darkGray
+//        nextMovie.textAlignment = .center
+//        nextMovie.text = "Next movie plays in.. 10s"
+//        nextMovie.isHidden = true
+//        self.contentOverlayView?.addSubview(nextMovie)
         
         // Do any additional setup after loading the view.
     }

@@ -290,7 +290,8 @@
         <scene sceneID="k3J-KT-DtH">
             <objects>
                 <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="DOo-Fd-JN6" customClass="MoviePlayerViewController" customModule="FamilyTV" customModuleProvider="target" sceneMemberID="viewController">
-                    <size key="freeformSize" width="1920" height="1080"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="1918" height="1079"/>
                 </avPlayerViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O1n-74-vLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
