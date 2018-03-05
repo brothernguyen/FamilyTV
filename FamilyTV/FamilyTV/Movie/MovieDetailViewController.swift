@@ -25,11 +25,23 @@ class MovieDetailViewController: UIViewController {
     var catMovies = [JSON]()
     var image: UIImage?
     var playerViewController: MoviePlayerViewController?
+    var timeObserver: AnyObject?
+    var isMiniPlayerPlayed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.playerViewController = MoviePlayerViewController()
+        if(self.timeObserver != nil){
+            self.releaseTimeObserver()
+        }
         self.initLayout()
+    }
+    
+    func releaseTimeObserver(){
+        if let timeObserver = self.timeObserver {
+            self.playerViewController?.player?.removeTimeObserver(timeObserver)
+            self.timeObserver = nil
+        }
     }
         
     func initLayout() {
@@ -78,16 +90,54 @@ class MovieDetailViewController: UIViewController {
             playerViewController.player!.play()
         }
         
-        let currentItem = playerViewController.player?.currentItem
-        let duration = currentItem?.duration
-        debugPrint("==>duration: ", CMTimeGetSeconds(duration!))
+        NotificationCenter.default.addObserver(self, selector: #selector(MovieDetailViewController.movieEnded), name:NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(MovieDetailViewController.movieEnded), name:NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)                
+        self.startTimer()
+    }
+    
+    func startTimer() {
+        let interval = CMTimeMake(1, 1)
+        timeObserver = playerViewController?.player?.addPeriodicTimeObserver(forInterval: interval,
+                                                                             queue: DispatchQueue.main) { (elapsedTime: CMTime) -> Void in
+                                                                                self.handleCountdown(Int(CMTimeGetSeconds(elapsedTime)))
+                                                                                
+            } as AnyObject
+    }
+    
+    func handleCountdown(_ countdown: Int) {
+        let currentItem = playerViewController?.player?.currentItem
+        let durationTime = Int(CMTimeGetSeconds((currentItem?.duration)!))
+        let remainTime = durationTime - countdown
+        
+        if remainTime <= 15 {
+            playerViewController?.countdownLabel.text = String(remainTime)            
+            if !isMiniPlayerPlayed {
+                playerViewController?.playMiniPlayer(getNextMovieUrl())
+                isMiniPlayerPlayed = true
+            }
+            if remainTime == 0 && isMiniPlayerPlayed {
+                playerViewController?.stopMiniPlayer()
+                isMiniPlayerPlayed = false
+            }
+        }
+    }
+    
+    func getNextMovieUrl() -> URL {
+        var nextMovieUrl = URL(string: "")
+        if self.movieIndex < catMovies.count {
+            let nextIndex = self.movieIndex + 1
+            nextMovieUrl = URL(string: catMovies[nextIndex]["link"][1]["attributes"]["href"].stringValue)
+            return nextMovieUrl!
+        }
+        return nextMovieUrl!
     }
     
     @objc func movieEnded() {
-        
         //Play next movie
+        self.playNextMovie()
+    }
+    
+    func playNextMovie() {
         self.movieIndex += 1
         if self.movieIndex == catMovies.count {
             removePlayer()
@@ -98,15 +148,11 @@ class MovieDetailViewController: UIViewController {
         guard let playerViewController = self.playerViewController else { return }
         playerViewController.player = player
         playerViewController.player!.play()
+        self.startTimer()
     }
     
     func removePlayer() {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
        dismiss(animated: true, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    }    
 }
