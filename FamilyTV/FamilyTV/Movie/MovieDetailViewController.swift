@@ -65,6 +65,10 @@ class MovieDetailViewController: UIViewController {
         }
         
         playMovieButton.layer.cornerRadius = 5
+        
+        img.layer.cornerRadius = 15
+        img.clipsToBounds = true
+        
         releaseDate.text = movieDetail["im:releaseDate"]["attributes"]["label"].stringValue
         
         //Blur effect
@@ -118,11 +122,12 @@ class MovieDetailViewController: UIViewController {
         if remainTime <= 25 {
             playerViewController?.nextMovieLabel.text = "Next movie plays in " + String(remainTime) + " s"
             if !isMiniPlayerPlayed {
-                debugPrint("==>url: ", getNextMovieUrl())
-                playerViewController?.playMiniPlayer(getNextMovieUrl())                
-                isMiniPlayerPlayed = true
-                self.miniPlayerTimer = Timer.scheduledTimer(timeInterval: 5, target: self,
-                                                           selector: #selector(MovieDetailViewController.showMiniPLayer), userInfo: nil, repeats: false)
+                guard let nextUrl = getNextMovieUrl() else { return }
+                playerViewController?.playMiniPlayer(URL(string: nextUrl)!)
+                    isMiniPlayerPlayed = true
+                    self.miniPlayerTimer = Timer.scheduledTimer(timeInterval: 5, target: self,
+                                                                selector: #selector(MovieDetailViewController.showMiniPLayer), userInfo: nil, repeats: false)
+                
             }
         }
     }
@@ -133,14 +138,14 @@ class MovieDetailViewController: UIViewController {
         playerViewController?.nextMovieLabel.isHidden = false        
     }
     
-    func getNextMovieUrl() -> URL {
-        var nextMovieUrl = URL(string: "")
-        if self.movieIndex < catMovies.count {
+    func getNextMovieUrl() -> String? {
+        
+        if self.movieIndex < catMovies.count - 1 {
             let nextIndex = self.movieIndex + 1
-            nextMovieUrl = URL(string: catMovies[nextIndex]["link"][1]["attributes"]["href"].stringValue)
-            return nextMovieUrl!
+            let nextMovieUrl = catMovies[nextIndex]["link"][1]["attributes"]["href"].stringValue
+            return nextMovieUrl
         }
-        return nextMovieUrl!
+        return nil
     }
     
     @objc func movieEnded() {
