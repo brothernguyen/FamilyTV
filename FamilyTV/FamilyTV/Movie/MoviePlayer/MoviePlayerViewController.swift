@@ -15,31 +15,19 @@ class MoviePlayerViewController: AVPlayerViewController {
     let avPlayer = AVPlayer()
     var avPlayerLayer: AVPlayerLayer!
     var nextMovieLabel = UILabel()
-    var countdownLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Next movie label
-        nextMovieLabel = UILabel(frame: CGRect(x: 1450, y: 150, width: 400, height: 50))
+        nextMovieLabel = UILabel(frame: CGRect(x: 1370, y: 150, width: 480, height: 22))
         nextMovieLabel.backgroundColor = UIColor.black
         nextMovieLabel.alpha = 0.6
         nextMovieLabel.textColor = UIColor.white
-        nextMovieLabel.font = nextMovieLabel.font.withSize(30)
+        nextMovieLabel.font = nextMovieLabel.font.withSize(22)
         nextMovieLabel.textAlignment = .center
-        nextMovieLabel.text = "Next movie plays in     s"
         nextMovieLabel.isHidden = true
         self.view.addSubview(nextMovieLabel)
-        
-        //Countdown label
-        countdownLabel = UILabel(frame: CGRect(x: 1750, y: 150, width: 50, height: 50))
-        countdownLabel.backgroundColor = UIColor.clear
-        countdownLabel.alpha = 0.6
-        countdownLabel.textColor = UIColor.white
-        countdownLabel.font = nextMovieLabel.font.withSize(30)
-        countdownLabel.textAlignment = .center
-        countdownLabel.isHidden = true
-        self.view.addSubview(countdownLabel)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,23 +35,24 @@ class MoviePlayerViewController: AVPlayerViewController {
     }
     
     func playMiniPlayer(_ url: URL) {
+        debugPrint("==>Is video url valid?: ", UIApplication.shared.canOpenURL(url))
+        
         avPlayerLayer = AVPlayerLayer(player: avPlayer)
-        avPlayerLayer.frame = CGRect(x: 1450, y: 150, width: 400, height: 240)
+        avPlayerLayer.frame = CGRect(x: 1370, y: 150, width: 480, height: 240)
         avPlayerLayer.videoGravity = .resize
         avPlayerLayer.opacity = 0.6
         self.contentOverlayView?.layer.insertSublayer(avPlayerLayer, at: 0)
 
-//        let url = NSURL(string: "https://content.jwplatform.com/manifests/vM7nH0Kl.m3u8")
         let playerItem = AVPlayerItem(url: url as URL)
         avPlayer.replaceCurrentItem(with: playerItem)
-        avPlayer.play()
-        nextMovieLabel.isHidden = false
-        countdownLabel.isHidden = false
+        avPlayer.play()        
+        avPlayerLayer.opacity = 0.0
+        avPlayer.pause()
+        avPlayer.isMuted = true
     }
     
     func stopMiniPlayer() {
         nextMovieLabel.isHidden = true
-        countdownLabel.isHidden = true
         avPlayer.pause()
         avPlayerLayer.removeFromSuperlayer()
     }

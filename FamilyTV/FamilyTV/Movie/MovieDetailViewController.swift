@@ -27,6 +27,7 @@ class MovieDetailViewController: UIViewController {
     var playerViewController: MoviePlayerViewController?
     var timeObserver: AnyObject?
     var isMiniPlayerPlayed = false
+    var miniPlayerTimer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +64,7 @@ class MovieDetailViewController: UIViewController {
             self.image = img.image
         }
         
+        playMovieButton.layer.cornerRadius = 5
         releaseDate.text = movieDetail["im:releaseDate"]["attributes"]["label"].stringValue
         
         //Blur effect
@@ -106,20 +108,29 @@ class MovieDetailViewController: UIViewController {
     
     func handleCountdown(_ countdown: Int) {
         let currentItem = playerViewController?.player?.currentItem
-        let durationTime = Int(CMTimeGetSeconds((currentItem?.duration)!))
+        let duration = CMTimeGetSeconds((currentItem?.duration)!)
+        guard !(duration.isNaN || duration.isInfinite) else {
+            return ()
+        }
+        let durationTime = Int(duration)
         let remainTime = durationTime - countdown
         
-        if remainTime <= 15 {
-            playerViewController?.countdownLabel.text = String(remainTime)            
+        if remainTime <= 25 {
+            playerViewController?.nextMovieLabel.text = "Next movie plays in " + String(remainTime) + " s"
             if !isMiniPlayerPlayed {
-                playerViewController?.playMiniPlayer(getNextMovieUrl())
+                debugPrint("==>url: ", getNextMovieUrl())
+                playerViewController?.playMiniPlayer(getNextMovieUrl())                
                 isMiniPlayerPlayed = true
-            }
-            if remainTime == 0 && isMiniPlayerPlayed {
-                playerViewController?.stopMiniPlayer()
-                isMiniPlayerPlayed = false
+                self.miniPlayerTimer = Timer.scheduledTimer(timeInterval: 5, target: self,
+                                                           selector: #selector(MovieDetailViewController.showMiniPLayer), userInfo: nil, repeats: false)
             }
         }
+    }
+    
+    @objc func showMiniPLayer() {
+        playerViewController?.avPlayer.play()
+        playerViewController?.avPlayerLayer.opacity = 0.8
+        playerViewController?.nextMovieLabel.isHidden = false        
     }
     
     func getNextMovieUrl() -> URL {
@@ -133,6 +144,11 @@ class MovieDetailViewController: UIViewController {
     }
     
     @objc func movieEnded() {
+        //Remove mini player
+        if isMiniPlayerPlayed {
+            playerViewController?.stopMiniPlayer()
+            isMiniPlayerPlayed = false
+        }
         //Play next movie
         self.playNextMovie()
     }
