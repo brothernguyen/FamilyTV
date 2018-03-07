@@ -134,7 +134,7 @@ class MovieDetailViewController: UIViewController {
     
     @objc func showMiniPLayer() {
         playerViewController?.avPlayer.play()
-        playerViewController?.avPlayerLayer.opacity = 0.8
+        playerViewController?.avPlayerLayer.opacity = 0.7
         playerViewController?.nextMovieLabel.isHidden = false        
     }
     

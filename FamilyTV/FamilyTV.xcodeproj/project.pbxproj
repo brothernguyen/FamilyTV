@@ -13,6 +13,7 @@
 		6850EA0720295DC000D2E3A7 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850EA0620295DC000D2E3A7 /* NewsCell.swift */; };
 		6850EA132029658A00D2E3A7 /* banner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6850EA112029658A00D2E3A7 /* banner@2x.png */; };
 		6850EA142029658A00D2E3A7 /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 6850EA122029658A00D2E3A7 /* banner.png */; };
+		687C32D3204FA2F2008E5975 /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 687C32D2204FA2F2008E5975 /* appIcon.png */; };
 		68A9BCCD202C39D100026882 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A9BCCB202C39D100026882 /* MovieCell.swift */; };
 		68A9BCCE202C39D100026882 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68A9BCCC202C39D100026882 /* MovieCell.xib */; };
 		68F995B020456BA100C5CDFA /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 68B2EA4B20455818008BD00A /* background.png */; };
@@ -63,6 +64,7 @@
 		6850EA0620295DC000D2E3A7 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		6850EA112029658A00D2E3A7 /* banner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner@2x.png"; sourceTree = "<group>"; };
 		6850EA122029658A00D2E3A7 /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
+		687C32D2204FA2F2008E5975 /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appIcon.png; sourceTree = "<group>"; };
 		68A9BCCB202C39D100026882 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		68A9BCCC202C39D100026882 /* MovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 		68B2EA4B20455818008BD00A /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		CC5E9E762004F15900209569 = {
 			isa = PBXGroup;
 			children = (
+				687C32D2204FA2F2008E5975 /* appIcon.png */,
 				CC5E9E812004F15900209569 /* FamilyTV */,
 				CC862C43203082EE007E2B98 /* TopShelf */,
 				CC862C40203082EE007E2B98 /* Frameworks */,
@@ -290,6 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				687C32D3204FA2F2008E5975 /* appIcon.png in Resources */,
 				68F995B020456BA100C5CDFA /* background.png in Resources */,
 				68F995B120456BA100C5CDFA /* background@2x.png in Resources */,
 				68A9BCCE202C39D100026882 /* MovieCell.xib in Resources */,
