@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		683371962281394B00A75B7F /* LiveTVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683371952281394B00A75B7F /* LiveTVViewController.swift */; };
+		683371A12281929400A75B7F /* LiveTVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683371A02281929400A75B7F /* LiveTVModel.swift */; };
 		6850EA0020295C2600D2E3A7 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850E9FE20295C2600D2E3A7 /* MovieViewController.swift */; };
 		6850EA0420295C5E00D2E3A7 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850EA0220295C5E00D2E3A7 /* NewsViewController.swift */; };
 		6850EA0520295C5E00D2E3A7 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850EA0320295C5E00D2E3A7 /* NewsDetailViewController.swift */; };
@@ -57,6 +59,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		683371952281394B00A75B7F /* LiveTVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTVViewController.swift; sourceTree = "<group>"; };
+		683371A02281929400A75B7F /* LiveTVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTVModel.swift; sourceTree = "<group>"; };
 		68361C042045654A00CACF6C /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		6850E9FE20295C2600D2E3A7 /* MovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		6850EA0220295C5E00D2E3A7 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +109,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		683371942281386300A75B7F /* LiveTV */ = {
+			isa = PBXGroup;
+			children = (
+				683371952281394B00A75B7F /* LiveTVViewController.swift */,
+				683371A02281929400A75B7F /* LiveTVModel.swift */,
+			);
+			path = LiveTV;
+			sourceTree = "<group>";
+		};
 		6850EA0C2029654D00D2E3A7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				6850EA0C2029654D00D2E3A7 /* Images */,
+				683371942281386300A75B7F /* LiveTV */,
 				CC7757A8201F6C4E00B8FB63 /* Movie */,
 				CC7757A1201F6B8800B8FB63 /* News */,
 				CC5E9E822004F15900209569 /* AppDelegate.swift */,
@@ -321,11 +335,13 @@
 			files = (
 				CC5E9E922004F2EB00209569 /* SwiftyJSON.swift in Sources */,
 				6850EA0020295C2600D2E3A7 /* MovieViewController.swift in Sources */,
+				683371962281394B00A75B7F /* LiveTVViewController.swift in Sources */,
 				6850EA0520295C5E00D2E3A7 /* NewsDetailViewController.swift in Sources */,
 				CCD231AA201227C10019D2BA /* RemoteImageView.swift in Sources */,
 				6850EA0420295C5E00D2E3A7 /* NewsViewController.swift in Sources */,
 				68FB3720202AB9A1002CE32F /* MovieCollectionView.swift in Sources */,
 				68F995B42046A07300C5CDFA /* MoviePlayerViewController.swift in Sources */,
+				683371A12281929400A75B7F /* LiveTVModel.swift in Sources */,
 				CC4677DC20405393007AF0FB /* MovieDetailViewController.swift in Sources */,
 				6850EA0720295DC000D2E3A7 /* NewsCell.swift in Sources */,
 				68A9BCCD202C39D100026882 /* MovieCell.swift in Sources */,

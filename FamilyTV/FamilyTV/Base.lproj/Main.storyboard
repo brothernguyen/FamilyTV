@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="13196" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fM6-YP-Hg8">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="14313.18" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fM6-YP-Hg8">
     <device id="appleTV" orientation="landscape">
         <adaptation id="light"/>
     </device>
     <dependencies>
         <deployment version="4128" identifier="tvOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-            <string>HelveticaNeue-Bold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--News-->
         <scene sceneID="nNh-td-DoJ">
@@ -112,6 +106,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AJb-Jf-qpD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="874" y="1862"/>
+        </scene>
+        <!--LiveTV View Controller-->
+        <scene sceneID="eU3-rZ-faL">
+            <objects>
+                <collectionViewController storyboardIdentifier="LiveTV" id="0Cj-nG-fMb" customClass="LiveTVViewController" customModule="FamilyTV" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="IrK-vg-z6z">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="100" minimumInteritemSpacing="20" id="2aI-l2-Nxd">
+                            <size key="itemSize" width="375" height="375"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="80" minY="80" maxX="80" maxY="80"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="lFH-5g-GR1" customClass="LiveTVCell" customModule="FamilyTV" customModuleProvider="target">
+                                <rect key="frame" x="80" y="80" width="375" height="375"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Agp-RT-NmD" customClass="RemoteImageView" customModule="FamilyTV" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="210" id="HSt-Fr-XEr"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erO-CP-Rvd">
+                                            <rect key="frame" x="0.0" y="225" width="375" height="138"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="138" id="57c-R6-a4I"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="Agp-RT-NmD" firstAttribute="top" secondItem="lFH-5g-GR1" secondAttribute="top" id="Bdh-ci-1iY"/>
+                                    <constraint firstAttribute="trailing" secondItem="Agp-RT-NmD" secondAttribute="trailing" id="FB0-Xu-Uxs"/>
+                                    <constraint firstItem="erO-CP-Rvd" firstAttribute="top" secondItem="Agp-RT-NmD" secondAttribute="bottom" constant="15" id="WtZ-Yh-gGC"/>
+                                    <constraint firstAttribute="trailing" secondItem="erO-CP-Rvd" secondAttribute="trailing" id="cv1-c9-cK9"/>
+                                    <constraint firstItem="Agp-RT-NmD" firstAttribute="leading" secondItem="lFH-5g-GR1" secondAttribute="leading" id="fNW-yi-INF"/>
+                                    <constraint firstItem="erO-CP-Rvd" firstAttribute="leading" secondItem="lFH-5g-GR1" secondAttribute="leading" id="l66-GJ-UNK"/>
+                                    <constraint firstItem="erO-CP-Rvd" firstAttribute="top" secondItem="Agp-RT-NmD" secondAttribute="bottom" constant="15" id="s1Z-Lp-Wtu"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="liveTVImage" destination="Agp-RT-NmD" id="Cnp-Be-lL2"/>
+                                    <outlet property="liveTVLabel" destination="erO-CP-Rvd" id="Xzc-bg-XSe"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="0Cj-nG-fMb" id="RLR-Xh-G3n"/>
+                            <outlet property="delegate" destination="0Cj-nG-fMb" id="Cnx-4w-h2D"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yeL-QW-1yS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="874" y="3654"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="aKT-LY-BEJ">

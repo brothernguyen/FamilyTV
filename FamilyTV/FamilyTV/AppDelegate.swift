@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             for cat in categories {
                 if cat == "Live TV News" {
-                    if let newsController = tabBarController.storyboard?.instantiateViewController(withIdentifier: "News") as? NewsViewController {
+                    if let newsController = tabBarController.storyboard?.instantiateViewController(withIdentifier: "LiveTV") as? LiveTVViewController {
                         newsController.title = cat
                         viewControllers.append(newsController)
                     }
