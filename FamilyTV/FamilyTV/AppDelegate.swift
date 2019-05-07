@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let categories = ["Movie", "Business", "Culture", "Sport", "Technology", "Travel"]
+    let categories = ["Live TV News", "Business", "Culture", "Sport", "Movie"]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Typecast root view controller to be a tab bar controller
@@ -20,7 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var viewControllers = [UIViewController]()
             
             for cat in categories {
-                if cat == "Movie" {
+                if cat == "Live TV News" {
+                    if let newsController = tabBarController.storyboard?.instantiateViewController(withIdentifier: "News") as? NewsViewController {
+                        newsController.title = cat
+                        viewControllers.append(newsController)
+                    }
+                } else if cat == "Movie" {
                     if let movieController = tabBarController.storyboard?.instantiateViewController(withIdentifier: "Movie") as? MovieViewController {
                         movieController.title = cat
                         viewControllers.append(movieController)
