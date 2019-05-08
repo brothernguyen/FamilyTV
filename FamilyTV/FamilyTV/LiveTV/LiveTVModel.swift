@@ -10,11 +10,12 @@ import Foundation
 
 class LiveTVModel: NSObject {
     var name: String
-    
+    var image: String
     var videoUrl: URL?
     
-    init?(name: String, videoUrl: URL) {
-        self.name = name        
+    init?(name: String, image: String, videoUrl: URL) {
+        self.name = name
+        self.image = image
         self.videoUrl = videoUrl
     }
 }

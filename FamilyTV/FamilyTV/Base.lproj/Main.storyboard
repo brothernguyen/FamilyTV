@@ -128,14 +128,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Agp-RT-NmD" customClass="RemoteImageView" customModule="FamilyTV" customModuleProvider="target">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Agp-RT-NmD" customClass="RemoteImageView" customModule="FamilyTV" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="210" id="HSt-Fr-XEr"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erO-CP-Rvd">
-                                            <rect key="frame" x="0.0" y="225" width="375" height="138"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erO-CP-Rvd">
+                                            <rect key="frame" x="0.0" y="210" width="375" height="138"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="138" id="57c-R6-a4I"/>
                                             </constraints>
@@ -148,11 +148,10 @@
                                 <constraints>
                                     <constraint firstItem="Agp-RT-NmD" firstAttribute="top" secondItem="lFH-5g-GR1" secondAttribute="top" id="Bdh-ci-1iY"/>
                                     <constraint firstAttribute="trailing" secondItem="Agp-RT-NmD" secondAttribute="trailing" id="FB0-Xu-Uxs"/>
-                                    <constraint firstItem="erO-CP-Rvd" firstAttribute="top" secondItem="Agp-RT-NmD" secondAttribute="bottom" constant="15" id="WtZ-Yh-gGC"/>
+                                    <constraint firstItem="erO-CP-Rvd" firstAttribute="top" secondItem="Agp-RT-NmD" secondAttribute="bottom" id="WtZ-Yh-gGC"/>
                                     <constraint firstAttribute="trailing" secondItem="erO-CP-Rvd" secondAttribute="trailing" id="cv1-c9-cK9"/>
                                     <constraint firstItem="Agp-RT-NmD" firstAttribute="leading" secondItem="lFH-5g-GR1" secondAttribute="leading" id="fNW-yi-INF"/>
                                     <constraint firstItem="erO-CP-Rvd" firstAttribute="leading" secondItem="lFH-5g-GR1" secondAttribute="leading" id="l66-GJ-UNK"/>
-                                    <constraint firstItem="erO-CP-Rvd" firstAttribute="top" secondItem="Agp-RT-NmD" secondAttribute="bottom" constant="15" id="s1Z-Lp-Wtu"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="liveTVImage" destination="Agp-RT-NmD" id="Cnp-Be-lL2"/>

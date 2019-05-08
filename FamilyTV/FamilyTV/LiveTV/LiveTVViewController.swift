@@ -34,12 +34,20 @@ class LiveTVViewController: UICollectionViewController {
         view.sendSubview(toBack: imageView)
         self.playerViewController = MoviePlayerViewController()
         
-        channels.append(LiveTVModel.init(name: "HTV9", videoUrl: URL(string: "http://live.cdn.mobifonetv.vn/motv/myhtv9_hls.smil/chunklist_b1200000.m3u8")!)!)
-        channels.append(LiveTVModel.init(name: "HTV7", videoUrl: URL(string: "http://live.cdn.mobifonetv.vn/motv/myhtv7_hls.smil/chunklist_b1200000.m3u8")!)!)
+        channels.append(LiveTVModel.init(name: "ABC News Live", image: "https://i.imgur.com/DhyuABZ.png", videoUrl: URL(string: "https://abclive2-lh.akamaihd.net/i/abc_live11@423404/master.m3u8")!)!)
+        channels.append(LiveTVModel.init(name: "Bloomberg Television", image: "https://i.imgur.com/idRFfhY.png", videoUrl: URL(string: "https://liveproduseast.global.ssl.fastly.net/btv/desktop/us_live.m3u8")!)!)
+        channels.append(LiveTVModel.init(name: "ACK TV", image: "https://web-cdn.blivenyc.com/generic/mee.logo-golden-trans.png", videoUrl: URL(string: "https://video.blivenyc.com/broadcast/prod/2061/22/file-3192k.m3u8")!)!)
+        channels.append(LiveTVModel.init(name: "AXS TV", image: "https://i.imgur.com/mexZF9k.png", videoUrl: URL(string: "http://161.0.157.6/PLTV/88888888/224/3221226568/index.m3u8")!)!)
+        channels.append(LiveTVModel.init(name: "Big Ten Network", image: "https://upload.wikimedia.org/wikipedia/en/b/b4/Big_Ten_Network.png", videoUrl: URL(string: "http://161.0.157.38/PLTV/88888888/224/3221226177/index.m3u8?fluxustv.m3u8")!)!)
+        channels.append(LiveTVModel.init(name: "Buzzr TV", image: "https://upload.wikimedia.org/wikipedia/en/b/be/Buzzr_%28TV_Network%29_Logo.png", videoUrl: URL(string: "https://buzzr.global.ssl.fastly.net/out/u/buzzr_hls_4.m3u8?fluxustv.m3u8")!)!)
+        channels.append(LiveTVModel.init(name: "BYU TV", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/BYUtv_logo.svg/1200px-BYUtv_logo.svg.png", videoUrl: URL(string: "https://byubhls-i.akamaihd.net/hls/live/267187/byutvhls/master_4064.m3u8")!)!)
+        channels.append(LiveTVModel.init(name: "CBS News", image: "https://www.depauw.edu/files/resources/large_cbs-news.png", videoUrl: URL(string: "http://cbsnewshd-lh.akamaihd.net/i/CBSNHD_7@199302/master.m3u8")!)!)
+        channels.append(LiveTVModel.init(name: "CBS News", image: "https://www.depauw.edu/files/resources/large_cbs-news.png", videoUrl: URL(string: "http://cbsnewshd-lh.akamaihd.net/i/CBSNHD_7@199302/master.m3u8")!)!)
+        channels.append(LiveTVModel.init(name: "HTV9", image: "https://upload.wikimedia.org/wikipedia/commons/f/fe/HTV9.png", videoUrl: URL(string: "http://live.cdn.mobifonetv.vn/motv/myhtv9_hls.smil/chunklist_b1200000.m3u8")!)!)
+        channels.append(LiveTVModel.init(name: "HTV7", image: "https://upload.wikimedia.org/wikipedia/vi/4/4c/HTV7Logomoi.png", videoUrl: URL(string: "http://live.cdn.mobifonetv.vn/motv/myhtv7_hls.smil/chunklist_b1200000.m3u8")!)!)
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        debugPrint("==>count:", channels.count)
         return channels.count
     }
     
@@ -48,14 +56,13 @@ class LiveTVViewController: UICollectionViewController {
         
         let newsItem = channels[indexPath.row]
         let title = newsItem.name
-        //let thumbnail = newsItem["fields"]["thumbnail"].stringValue
-        debugPrint("==>Title", title)
+        let thumbnail = newsItem.image
         
         newsCell.liveTVLabel.text = title
-//        if let imageURL = URL(string: thumbnail) {
-//            newsCell.liveTVImage.load(imageURL)
-//        }
         
+        if let imageURL = URL(string: thumbnail) {
+            newsCell.liveTVImage.load(imageURL)
+        }
         return newsCell
     }
     
