@@ -128,7 +128,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Agp-RT-NmD" customClass="RemoteImageView" customModule="FamilyTV" customModuleProvider="target">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Agp-RT-NmD">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="210" id="HSt-Fr-XEr"/>
@@ -156,6 +156,7 @@
                                 <connections>
                                     <outlet property="liveTVImage" destination="Agp-RT-NmD" id="Cnp-Be-lL2"/>
                                     <outlet property="liveTVLabel" destination="erO-CP-Rvd" id="Xzc-bg-XSe"/>
+                                    <outlet property="unfocusedConstraint" destination="WtZ-Yh-gGC" id="Jhg-9k-FIx"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

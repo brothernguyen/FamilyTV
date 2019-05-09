@@ -9,6 +9,8 @@
 import UIKit
 import AVKit
 import AVFoundation
+import Alamofire
+import AlamofireImage
 
 class LiveTVViewController: UICollectionViewController {
     
@@ -37,7 +39,7 @@ class LiveTVViewController: UICollectionViewController {
         channels.append(LiveTVModel.init(name: "ABC News Live", image: "https://i.imgur.com/DhyuABZ.png", videoUrl: URL(string: "https://abclive2-lh.akamaihd.net/i/abc_live11@423404/master.m3u8")!)!)
         channels.append(LiveTVModel.init(name: "Bloomberg Television", image: "https://i.imgur.com/idRFfhY.png", videoUrl: URL(string: "https://liveproduseast.global.ssl.fastly.net/btv/desktop/us_live.m3u8")!)!)
         channels.append(LiveTVModel.init(name: "ACK TV", image: "https://web-cdn.blivenyc.com/generic/mee.logo-golden-trans.png", videoUrl: URL(string: "https://video.blivenyc.com/broadcast/prod/2061/22/file-3192k.m3u8")!)!)
-        channels.append(LiveTVModel.init(name: "AXS TV", image: "https://i.imgur.com/mexZF9k.png", videoUrl: URL(string: "http://161.0.157.6/PLTV/88888888/224/3221226568/index.m3u8")!)!)
+        channels.append(LiveTVModel.init(name: "AXS TV", image: "https://i.imgur.com/mexZF9k.png", videoUrl: URL(string: "http://161.0.157.6/PLTV/88888888/224/3221226568/index.m3u8")!)!)        
         channels.append(LiveTVModel.init(name: "Big Ten Network", image: "https://upload.wikimedia.org/wikipedia/en/b/b4/Big_Ten_Network.png", videoUrl: URL(string: "http://161.0.157.38/PLTV/88888888/224/3221226177/index.m3u8?fluxustv.m3u8")!)!)
         channels.append(LiveTVModel.init(name: "Buzzr TV", image: "https://upload.wikimedia.org/wikipedia/en/b/be/Buzzr_%28TV_Network%29_Logo.png", videoUrl: URL(string: "https://buzzr.global.ssl.fastly.net/out/u/buzzr_hls_4.m3u8?fluxustv.m3u8")!)!)
         channels.append(LiveTVModel.init(name: "BYU TV", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/BYUtv_logo.svg/1200px-BYUtv_logo.svg.png", videoUrl: URL(string: "https://byubhls-i.akamaihd.net/hls/live/267187/byutvhls/master_4064.m3u8")!)!)
@@ -59,9 +61,13 @@ class LiveTVViewController: UICollectionViewController {
         let thumbnail = newsItem.image
         
         newsCell.liveTVLabel.text = title
+        newsCell.liveTVImage.contentMode = UIViewContentMode.scaleAspectFit
+        newsCell.liveTVImage.clipsToBounds = true
         
-        if let imageURL = URL(string: thumbnail) {
-            newsCell.liveTVImage.load(imageURL)
+        Alamofire.request(thumbnail).responseImage { response in
+            if let image = response.result.value {
+                newsCell.liveTVImage.image = image
+            }
         }
         return newsCell
     }
@@ -74,13 +80,12 @@ class LiveTVViewController: UICollectionViewController {
         topViewController.present(playerViewController, animated: true) {
             playerViewController.player!.play()
         }
-    }
-    
+    }    
 }
 
 class LiveTVCell: UICollectionViewCell {
     
-    @IBOutlet weak var liveTVImage: RemoteImageView!
+    @IBOutlet weak var liveTVImage: UIImageView!
     @IBOutlet weak var liveTVLabel: UILabel!
     @IBOutlet var unfocusedConstraint: NSLayoutConstraint!
     
@@ -89,13 +94,14 @@ class LiveTVCell: UICollectionViewCell {
     override func awakeFromNib() {
         
         focusedConstraint = liveTVLabel.topAnchor.constraint(equalTo: liveTVImage.focusedFrameGuide.bottomAnchor, constant: 15)
+        liveTVImage.contentMode = UIViewContentMode.scaleAspectFit
     }
     
     override func updateConstraints() {
         super.updateConstraints()
         
-//        focusedConstraint.isActive = isFocused
-//        unfocusedConstraint.isActive = !isFocused
+        focusedConstraint.isActive = isFocused
+        unfocusedConstraint.isActive = !isFocused
     }
     
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
